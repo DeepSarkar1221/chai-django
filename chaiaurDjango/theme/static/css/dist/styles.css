@@ -9,13 +9,22 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
     monospace;
     --color-orange-500: oklch(70.5% 0.213 47.604);
+    --color-blue-200: oklch(88.2% 0.059 254.128);
     --color-blue-500: oklch(62.3% 0.214 259.815);
+    --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-black: #000;
+    --color-white: #fff;
+    --spacing: 0.25rem;
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
     --text-5xl: 3rem;
     --text-5xl--line-height: 1;
+    --font-weight-bold: 700;
     --tracking-normal: 0em;
     --leading-normal: 1.5;
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -10923,6 +10932,11 @@
       background-color: var(--color-base-content);
       color: var(--color-base-100);
     }
+  }
+  .m-4 {
+    margin: calc(var(--spacing) * 4);
+  }
+  @layer daisyui.l1.l2.l3 {
     .mockup-browser .mockup-browser-toolbar {
       margin-block: calc(0.25rem * 3);
       display: inline-flex;
@@ -12702,6 +12716,9 @@
       grid-auto-flow: column dense;
     }
   }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
   .join-horizontal {
     flex-direction: row;
     --join-v: 0;
@@ -12720,6 +12737,9 @@
   }
   .justify-center {
     justify-content: center;
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
   }
   .otp-joined {
     --otp-gap: 0rem;
@@ -12906,11 +12926,17 @@
       padding-block: 0.25rem;
     }
   }
+  .rounded {
+    border-radius: 0.25rem;
+  }
   .rounded-box {
     border-radius: var(--radius-box);
   }
   .rounded-field {
     border-radius: var(--radius-field);
+  }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
   }
   .rounded-selector {
     border-radius: var(--radius-selector);
@@ -13605,6 +13631,9 @@
       }
     }
   }
+  .bg-blue-200 {
+    background-color: var(--color-blue-200);
+  }
   .bg-blue-500 {
     background-color: var(--color-blue-500);
   }
@@ -13905,6 +13934,11 @@
       border-top: var(--border) solid var(--color-base-200);
       padding: 0.5rem;
     }
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  @layer daisyui.l1.l2.l3 {
     .menu-title {
       padding-inline: calc(0.25rem * 3);
       padding-block: calc(0.25rem * 2);
@@ -13976,6 +14010,14 @@
       padding-inline: calc(0.25rem * 2);
       padding-block: 0.25rem;
     }
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  @layer daisyui.l1.l2 {
     .file-input-xl {
       padding-inline-end: calc(0.25rem * 6);
       --size: calc(var(--size-field, 0.25rem) * 14);
@@ -14023,6 +14065,10 @@
       font-size: 0.6875rem;
     }
   }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
   .text-3xl {
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
@@ -14030,6 +14076,10 @@
   .text-5xl {
     font-size: var(--text-5xl);
     line-height: var(--tw-leading, var(--text-5xl--line-height));
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
   }
   @layer daisyui.l1.l2 {
     .dock-xs .dock-label {
@@ -14151,6 +14201,10 @@
   .leading-normal {
     --tw-leading: var(--leading-normal);
     line-height: var(--leading-normal);
+  }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
   }
   .tracking-normal {
     --tw-tracking: var(--tracking-normal);
@@ -14607,6 +14661,9 @@
   }
   .text-black {
     color: var(--color-black);
+  }
+  .text-white {
+    color: var(--color-white);
   }
   @layer daisyui.l1.l2.l3 {
     .vc .vc-header__content {
@@ -15429,6 +15486,11 @@
       --aura-radius: var(--radius-selector);
     }
   }
+  @media (hover: hover) {
+    .hover\:bg-blue-700:hover {
+      background-color: var(--color-blue-700);
+    }
+  }
 }
 @layer base {
   :where(:root),:root:has(input.theme-controller[value=light]:checked),[data-theme=light] {
@@ -15723,6 +15785,10 @@
   syntax: "*";
   inherits: false;
 }
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-tracking {
   syntax: "*";
   inherits: false;
@@ -15855,6 +15921,7 @@
       --tw-skew-y: initial;
       --tw-border-style: solid;
       --tw-leading: initial;
+      --tw-font-weight: initial;
       --tw-tracking: initial;
       --tw-ordinal: initial;
       --tw-slashed-zero: initial;
