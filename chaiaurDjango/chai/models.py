@@ -33,7 +33,7 @@ class ChairReview(models.Model):
 
     chai=models.ForeignKey(Chaivariety,on_delete=models.CASCADE,related_name='reviews')
     user=models.ForeignKey(User,on_delete=models.CASCADE)
-    rating=models.IntegerField(max_length=1,choices=CHAI_RATINGS)
+    rating=models.IntegerField(choices=CHAI_RATINGS)
     comment=models.TextField()
     date_added=models.DateTimeField(default=timezone.now)
 
@@ -53,3 +53,13 @@ class Store(models.Model):
         return self.name
 
 
+## one to one 
+
+class ChaiCertificate(models.Model):
+    name=models.OneToOneField(Chaivariety,on_delete=models.CASCADE,related_name='certificate')
+    certificate_number=models.CharField(max_length=100)
+    issued_date=models.DateTimeField(default=timezone.now)
+    valid_untill=models.DateTimeField()
+
+    def __str__(self):
+            return f'Certificate for {self.name}'
